@@ -1,0 +1,173 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --color-available: #16a34a;
+  --color-taken: #dc2626;
+  --color-warning: #f59e0b;
+  --color-primary: #2563eb;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: #f1f5f9;
+  color: #1e293b;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Utility Classes */
+.card {
+  @apply bg-white rounded-2xl shadow-sm border border-gray-100 p-6 transition-all duration-300;
+}
+
+.card:hover {
+  @apply shadow-md;
+}
+
+.btn-primary {
+  @apply bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-xl 
+         transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+.btn-success {
+  @apply bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-xl 
+         transition-all duration-200 active:scale-95;
+}
+
+.btn-danger {
+  @apply bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-6 rounded-xl 
+         transition-all duration-200 active:scale-95;
+}
+
+.btn-secondary {
+  @apply bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold py-3 px-6 rounded-xl 
+         transition-all duration-200 active:scale-95;
+}
+
+.input-field {
+  @apply w-full px-4 py-3 border border-gray-200 rounded-xl text-base
+         focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
+         transition-all duration-200 bg-white;
+}
+
+.select-field {
+  @apply w-full px-4 py-3 border border-gray-200 rounded-xl text-base
+         focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent
+         transition-all duration-200 bg-white appearance-none cursor-pointer;
+}
+
+/* Status Badge */
+.badge-available {
+  @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-semibold
+         bg-green-100 text-green-700;
+}
+
+.badge-taken {
+  @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-semibold
+         bg-red-100 text-red-700;
+}
+
+/* Tablet Card Variants */
+.tablet-card-available {
+  @apply border-l-4 border-l-green-500 bg-white;
+}
+
+.tablet-card-taken {
+  @apply border-l-4 border-l-red-500 bg-white;
+}
+
+/* Mobile optimized touch targets */
+@media (max-width: 640px) {
+  .btn-primary, .btn-success, .btn-danger {
+    @apply py-4 text-lg w-full;
+  }
+  
+  .input-field, .select-field {
+    @apply py-4 text-lg;
+  }
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.pulse-dot {
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+/* Print Styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background: white;
+  }
+  
+  .print-break {
+    page-break-after: always;
+  }
+}
+
+/* Loading Spinner */
+.spinner {
+  @apply inline-block w-5 h-5 border-2 border-white border-t-transparent rounded-full;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Toast notification */
+.toast {
+  @apply fixed top-4 right-4 z-50 px-6 py-4 rounded-xl shadow-lg text-white font-medium
+         animate-fadeIn;
+}
+
+.toast-success {
+  @apply bg-green-600;
+}
+
+.toast-error {
+  @apply bg-red-600;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
