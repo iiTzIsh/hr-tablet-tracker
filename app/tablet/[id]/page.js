@@ -1,10 +1,11 @@
 'use client';
 
-import { useState, useEffect, use } from 'react';
+import { useState, useEffect } from 'react';
+import { useParams } from 'next/navigation';
 
-export default function TabletPage({ params }) {
-  const { id } = use(params);
-  const tabletId = parseInt(id);
+export default function TabletPage() {
+  const params = useParams();
+  const tabletId = parseInt(params.id);
 
   const [tablet, setTablet] = useState(null);
   const [members, setMembers] = useState([]);
