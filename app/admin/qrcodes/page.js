@@ -77,7 +77,6 @@ export default function QRCodesPage() {
       <div className="flex items-center justify-between no-print">
         <div>
           <h2 className="text-2xl font-bold text-gray-900">QR Codes</h2>
-          <p className="text-gray-500 text-sm mt-1">Print and stick on each tablet</p>
         </div>
         <button onClick={handlePrint} className="btn-primary flex items-center gap-2">
           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -88,26 +87,7 @@ export default function QRCodesPage() {
         </button>
       </div>
 
-      {/* Instructions */}
-      <div className="card bg-blue-50 border-blue-100 no-print">
-        <div className="flex gap-3">
-          <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
-            <svg className="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-          </div>
-          <div>
-            <h4 className="font-semibold text-blue-900 text-sm">How to use</h4>
-            <ol className="text-blue-700 text-sm mt-1 space-y-1 list-decimal list-inside">
-              <li>Click "Print All QR Codes" to print this page</li>
-              <li>Cut out each QR code card</li>
-              <li>Stick the matching QR code on the back of each tablet</li>
-              <li>Members scan with their phone camera to check out / return</li>
-            </ol>
-          </div>
-        </div>
-      </div>
+      
 
       {/* App URL Info */}
       <div className="card no-print">
@@ -161,10 +141,7 @@ export default function QRCodesPage() {
         ))}
       </div>
 
-      {/* Print Footer */}
-      <div className="text-center text-xs text-gray-400 no-print">
-        <p>Tip: For best results, print on sticker paper or laminate the QR codes</p>
-      </div>
+      
     </div>
   );
 }

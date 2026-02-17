@@ -37,12 +37,7 @@ export default function AdminLayout({ children }) {
             </button>
 
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
-                <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                        d="M12 18h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                </svg>
-              </div>
+              <img src="/logo.png" alt="Singer" className="h-8 w-auto" />
               <div>
                 <h1 className="text-lg font-bold text-gray-900">Admin Panel</h1>
               </div>

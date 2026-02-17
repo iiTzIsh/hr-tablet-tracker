@@ -62,11 +62,7 @@ export default function Dashboard() {
         <div className="max-w-6xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center">
-                <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                </svg>
-              </div>
+              <img src="/logo.png" alt="Singer" className="h-10 w-auto" />
               <div>
                 <h1 className="text-xl font-bold text-gray-900">HR Tablet Tracker</h1>
                 <p className="text-xs text-gray-500">Equipment Management System</p>
