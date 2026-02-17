@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
 
+export const dynamic = 'force-dynamic';
+
 // POST /api/checkout - Take or return a tablet
 export async function POST(request) {
   try {
@@ -39,15 +41,21 @@ export async function POST(request) {
         .single();
 
       // Update tablet
-      const { error: updateError } = await supabase
+      const { data: updatedTablet, error: updateError } = await supabase
         .from('tablets')
         .update({
           taken_by: memberId,
           taken_at: new Date().toISOString(),
         })
-        .eq('id', tabletId);
+        .eq('id', tabletId)
+        .select();
 
       if (updateError) throw updateError;
+
+      if (!updatedTablet || updatedTablet.length === 0) {
+        console.error('Tablet update returned 0 rows - RLS may be blocking UPDATE');
+        return NextResponse.json({ error: 'Failed to update tablet. Check database permissions (RLS policies).' }, { status: 500 });
+      }
 
       // Log activity
       await supabase.from('activity_log').insert({
@@ -76,15 +84,21 @@ export async function POST(request) {
         .single();
 
       // Update tablet
-      const { error: updateError } = await supabase
+      const { data: updatedTablet, error: updateError } = await supabase
         .from('tablets')
         .update({
           taken_by: null,
           taken_at: null,
         })
-        .eq('id', tabletId);
+        .eq('id', tabletId)
+        .select();
 
       if (updateError) throw updateError;
+
+      if (!updatedTablet || updatedTablet.length === 0) {
+        console.error('Tablet return update returned 0 rows - RLS may be blocking UPDATE');
+        return NextResponse.json({ error: 'Failed to update tablet. Check database permissions (RLS policies).' }, { status: 500 });
+      }
 
       // Log activity
       await supabase.from('activity_log').insert({
