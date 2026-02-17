@@ -40,6 +40,6 @@ export async function GET() {
     return NextResponse.json({ tablets: formatted });
   } catch (error) {
     console.error('Error fetching tablets:', error);
-    return NextResponse.json({ error: 'Failed to fetch tablets' }, { status: 500 });
+    return NextResponse.json({ error: 'Failed to fetch tablets: ' + (error?.message || String(error)) }, { status: 500 });
   }
 }

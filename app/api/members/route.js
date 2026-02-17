@@ -14,7 +14,7 @@ export async function GET() {
     return NextResponse.json({ members });
   } catch (error) {
     console.error('Error fetching members:', error);
-    return NextResponse.json({ error: 'Failed to fetch members' }, { status: 500 });
+    return NextResponse.json({ error: 'Failed to fetch members: ' + (error?.message || String(error)) }, { status: 500 });
   }
 }
 
@@ -52,7 +52,7 @@ export async function POST(request) {
     return NextResponse.json({ member: data, message: 'Member created successfully' });
   } catch (error) {
     console.error('Error creating member:', error);
-    return NextResponse.json({ error: 'Failed to create member' }, { status: 500 });
+    return NextResponse.json({ error: 'Failed to create member: ' + (error?.message || String(error)) }, { status: 500 });
   }
 }
 

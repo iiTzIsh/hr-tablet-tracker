@@ -24,6 +24,11 @@ export async function middleware(request) {
     }
   }
 
+  // Allow public endpoint for active members (used by tablet scan page)
+  if (pathname === '/api/members/active') {
+    return NextResponse.next();
+  }
+
   // Protect admin-only API routes
   if (pathname.startsWith('/api/members') || pathname.startsWith('/api/logs')) {
     const token = request.cookies.get('admin_token')?.value;

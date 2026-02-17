@@ -75,13 +75,12 @@ CREATE INDEX idx_activity_log_created ON activity_log(created_at DESC);
 
 -- ========================================
 -- Row Level Security (RLS) Policies
--- Disable RLS for simplicity (API routes handle auth)
 -- ========================================
 ALTER TABLE members ENABLE ROW LEVEL SECURITY;
 ALTER TABLE tablets ENABLE ROW LEVEL SECURITY;
 ALTER TABLE activity_log ENABLE ROW LEVEL SECURITY;
 
--- Allow all operations via service role / anon key
-CREATE POLICY "Allow all on members" ON members FOR ALL USING (true) WITH CHECK (true);
-CREATE POLICY "Allow all on tablets" ON tablets FOR ALL USING (true) WITH CHECK (true);
-CREATE POLICY "Allow all on activity_log" ON activity_log FOR ALL USING (true) WITH CHECK (true);
+-- Allow all operations for anon and authenticated roles
+CREATE POLICY "Allow all on members" ON members FOR ALL TO anon, authenticated USING (true) WITH CHECK (true);
+CREATE POLICY "Allow all on tablets" ON tablets FOR ALL TO anon, authenticated USING (true) WITH CHECK (true);
+CREATE POLICY "Allow all on activity_log" ON activity_log FOR ALL TO anon, authenticated USING (true) WITH CHECK (true);
