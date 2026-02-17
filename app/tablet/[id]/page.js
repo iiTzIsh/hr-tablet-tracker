@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
-
+//new
 export default function TabletPage() {
   const params = useParams();
   const tabletId = parseInt(params.id);
