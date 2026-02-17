@@ -11,8 +11,8 @@ export default function AdminOverview() {
     const fetchData = async () => {
       try {
         const [tabletsRes, logsRes] = await Promise.all([
-          fetch('/api/tablets'),
-          fetch('/api/logs?limit=10'),
+          fetch('/api/tablets', { cache: 'no-store' }),
+          fetch('/api/logs?limit=10', { cache: 'no-store' }),
         ]);
         const tabletsData = await tabletsRes.json();
         const logsData = await logsRes.json();

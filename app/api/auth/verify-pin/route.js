@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
 
+export const dynamic = 'force-dynamic';
+
 // POST /api/auth/verify-pin - Verify member PIN (for device registration)
 export async function POST(request) {
   try {

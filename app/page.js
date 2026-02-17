@@ -9,7 +9,7 @@ export default function Dashboard() {
 
   const fetchTablets = async () => {
     try {
-      const res = await fetch('/api/tablets');
+      const res = await fetch('/api/tablets', { cache: 'no-store' });
       const data = await res.json();
       if (data.tablets) {
         setTablets(data.tablets);

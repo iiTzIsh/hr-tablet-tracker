@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server';
 import { supabase } from '@/lib/supabase';
 
 export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+export const fetchCache = 'force-no-store';
 
 // GET /api/tablets - Get all tablets with current status
 export async function GET() {
@@ -39,7 +41,11 @@ export async function GET() {
       takenAt: t.taken_at,
     }));
 
-    return NextResponse.json({ tablets: formatted });
+    const response = NextResponse.json({ tablets: formatted });
+    response.headers.set('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
+    response.headers.set('Pragma', 'no-cache');
+    response.headers.set('Expires', '0');
+    return response;
   } catch (error) {
     console.error('Error fetching tablets:', error);
     return NextResponse.json({ error: 'Failed to fetch tablets: ' + (error?.message || String(error)) }, { status: 500 });
