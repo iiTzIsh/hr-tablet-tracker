@@ -9,7 +9,7 @@ export default function LogsPage() {
 
   const fetchLogs = async () => {
     try {
-      const res = await fetch('/api/logs?limit=200');
+      const res = await fetch('/api/logs?limit=200', { cache: 'no-store' });
       const data = await res.json();
       setLogs(data.logs || []);
     } catch (error) {
